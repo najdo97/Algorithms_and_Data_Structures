@@ -76,11 +76,17 @@ class SLL<E> {
         if (first != null) {
             boolean flag = false;
             SLLNode<E> tmp = first;
-            while (tmp.next != before) { // todo - uslovite se greshni
+
+            if (first == before) {
+                insertFirst(o);
+            }
+
+            while (tmp.next != null) {
                 if (tmp.next == before) {
                     SLLNode<E> ins = new SLLNode<>(o, before);
                     tmp.next = ins;
                     flag = true;
+                    break;
                 }
                 tmp = tmp.next;
             }
@@ -92,8 +98,28 @@ class SLL<E> {
         }
     }
 
+    public void deleteFirst() {
+        SLLNode<E> tmp = first.next;
+        this.first = tmp;
+    }
+
+    public void deleteNode(SLLNode<E> node) {
+        SLLNode<E> tmp = first;
+
+
+        while (tmp.next != null) {
+
+            if (tmp.next == node) {
+                tmp.next = tmp.next.next;
+            }
+
+            tmp = tmp.next;
+        }
+    }
+
 
 }
+
 
 public class DeleteSLL {
 
