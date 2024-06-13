@@ -44,7 +44,7 @@ class SLL<E> {
             niza += "->" + tmp.value;
 
         }
-    return niza;
+        return niza;
     }
 
     public void insertFirst(E o) {
@@ -94,6 +94,8 @@ class SLL<E> {
     }
 
     public void insertBefore(E o, SLLNode<E> before) {
+
+        System.out.println("VLEGUVA ");
         if (first != null) {
             boolean flag = false;
             SLLNode<E> tmp = first;
@@ -137,14 +139,33 @@ class SLL<E> {
             tmp = tmp.next;
         }
     }
-
-
 }
-
 
 public class DeleteSLL {
 
     public static void change(SLL<Integer> list, int br) {
+        int brojac = 0;
+        //boolean flag=false;
+        SLLNode<Integer> node = list.getFirst();
+
+        while (node.next != null) {
+            if (node.value == br) {
+                brojac++;
+            }
+            node = node.next;
+        }
+
+        if ((brojac % 2) != 0) {
+
+            while (node.next != null) {
+                if (node.value == br) {
+                    list.insertBefore(br, node);
+                }
+                node = node.next;
+            }
+
+
+        }
 
     }
 
