@@ -28,9 +28,32 @@ class SLL<E> {
 
     public void insertFirst(E o) {
 
-        SLLNode<E> tmp = new SLLNode<>(o, this.first);
+        SLLNode<E> tmp = new SLLNode<E>(o, this.first);
         this.first = tmp;
 
+    }
+
+    public void insertAfter(E o, SLLNode<E> after) {
+
+        if (after == null) {
+            System.out.println("Dadeniot jazol e null");
+        } else {
+            SLLNode<E> tmp = first;
+            boolean flag = false;
+            while (tmp.next != null) {
+
+                if (tmp == after) {
+                    SLLNode<E> ins = new SLLNode<>(o, tmp.next);
+                    tmp.next = ins;
+                    flag = true;
+                }
+
+                tmp = tmp.next;
+            }
+            if (!flag) {
+                System.out.println("Baraniot jazol ne e vo listata.");
+            }
+        }
     }
 
     public void insertLast(E o) {
@@ -44,18 +67,31 @@ class SLL<E> {
                 }
                 tmp = tmp.next;
             }
-        }else{
+        } else {
             insertFirst(o);
         }
     }
 
-    public void insertBefore() {
-
+    public void insertBefore(E o, SLLNode<E> before) {
+        if (first != null) {
+            boolean flag = false;
+            SLLNode<E> tmp = first;
+            while (tmp.next != before) { // todo - uslovite se greshni
+                if (tmp.next == before) {
+                    SLLNode<E> ins = new SLLNode<>(o, before);
+                    tmp.next = ins;
+                    flag = true;
+                }
+                tmp = tmp.next;
+            }
+            if (flag) {
+                System.out.println("Elementot ne postoi vo nizata");
+            }
+        } else {
+            System.out.println("Listata e prazna");
+        }
     }
 
-    public void insertAfter() {
-
-    }
 
 }
 
