@@ -26,6 +26,27 @@ class SLL<E> {
         this.first = node;
     }
 
+    public SLLNode<E> getFirst() {
+        return first;
+    }
+
+    @Override
+    public String toString() {
+        String niza = new String();
+        SLLNode<E> tmp = first;
+        if (first == null) {
+
+            return "Prazna lista!!!";
+        }
+        niza += tmp.value;
+        while (tmp.next != null) {
+            tmp = tmp.next;
+            niza += "->" + tmp.value;
+
+        }
+    return niza;
+    }
+
     public void insertFirst(E o) {
 
         SLLNode<E> tmp = new SLLNode<E>(o, this.first);
@@ -139,7 +160,6 @@ public class DeleteSLL {
         int br = scan.nextInt();
         change(list1, br);
         System.out.println(list1);
-        System.out.println("damn");
 
 
     }
