@@ -151,15 +151,20 @@ public class DeleteSLL {
         while (node.next != null) {
             if (node.value == br) {
                 brojac++;
+
+                //  System.out.println("Vleguva vo while- change");
             }
             node = node.next;
         }
 
         if ((brojac % 2) != 0) {
+        //    System.out.println("Vleguva vo if - change");
 
+            node = list.getFirst();
             while (node.next != null) {
                 if (node.value == br) {
                     list.insertBefore(br, node);
+                   // break;
                 }
                 node = node.next;
             }
