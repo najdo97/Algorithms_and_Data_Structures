@@ -1,5 +1,18 @@
+
+//Нека се дадени две низи, кои треба да бидат со иста големина.
+// Да се напише функција која ќе прави промени во двете низи така што
+// доколку на дадена позиција тие имаат еднакви елементи, истите треба да се избришат и во двете низи.
+
 import java.util.ArrayList;
 
+
+class ChangeArrays<E>{
+
+public void compareAndChangeArrays(){
+
+}
+
+}
 public class Main {
     public static void main(String[] args) {
 
