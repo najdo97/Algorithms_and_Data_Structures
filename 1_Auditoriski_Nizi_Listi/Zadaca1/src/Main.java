@@ -6,13 +6,27 @@
 import java.util.ArrayList;
 
 
-class ChangeArrays<E>{
+class ChangeArrays<E> {
 
-public void compareAndChangeArrays(){
+    public void compareAndChangeArrays(ArrayList<Integer> niza3, ArrayList<Integer> niza4) {
+
+        if (niza3.size() != niza4.size()) {
+            System.out.println("Nizite ne se so ista dolzina");
+        } else {
+            int size = niza3.size();
+
+            for (int i = 0; i < size; i++) {
+                if (niza3.get(i).equals(niza4.get(i))) {
+                    niza3.remove(i);
+                    niza4.remove(i);
+                    size--;
+                }
+            }
+        }
+    }
 
 }
 
-}
 public class Main {
     public static void main(String[] args) {
 
@@ -24,9 +38,9 @@ public class Main {
 
         ArrayList<Integer> niza4 = new ArrayList<Integer>(3);
 
-        niza3.add(5);
-        niza3.add(13);
-        niza3.add(3);
+        niza4.add(5);
+        niza4.add(13);
+        niza4.add(3);
 
 
         System.out.println("Nizite pred primenuvanjeto na funkcijata: ");
