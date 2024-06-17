@@ -53,6 +53,109 @@ class SLL<E> {
         return lista;
     }
 
+    public void mirror() {
+        if (this.first != null) {
+
+            SLLNode<String> prev = null;
+            SLLNode<String> curr = first;
+            SLLNode<String> next = null;
+
+
+            while (curr != null) {
+                next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+            first = prev;
+
+        } else {
+            System.out.println("Listata e prazna");
+        }
+
+    }
+
+    //Problem 1: Reverse a Singly Linked List
+    //Description: Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+    //Example:
+    //Input: 1 -> 2 -> 3 -> 4 -> 5 -> NULL
+    //Output: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
+    public SLLNode<String> reverseList(SLLNode<String> head) {
+
+
+        if (head == null) {
+            System.out.println("Listata e prazna");
+        } else {
+
+            SLLNode<String> previous = null;
+            SLLNode<String> current = head;
+            SLLNode<String> next = null;
+
+            while (current != null) {
+
+                next = current.next;
+                current.next = previous;
+
+                previous = current;
+                current = next;
+
+            }
+            head = previous;
+        }
+
+        return head;
+    }
+
+    public SLLNode<String> getHead() {
+        return this.first;
+    }
+
+    public void reverseInbetween(int m, int n) {
+        if (first != null) {
+            SLLNode<String> curr = this.first;
+            SLLNode<String> pre = null;
+            SLLNode<String> start = null;
+            SLLNode<String> after = null;
+
+            for (int i = 1; i < m; i++) {
+                curr = curr.next;
+            }
+            pre = curr;
+            after = curr.next;
+
+            for (int i = 0; i < n - m; i++) {
+                start
+
+            }
+
+//            while (curr != null) {
+//
+//                if (count + 1 == m) {
+//                    pre = curr;
+//                }
+//                if (count == m) {
+//                    while (count <= n) {
+//                        next = curr.next;
+//                        curr.next = prev;
+//                        prev = curr;
+//                        curr = next;
+//
+//                        count++;
+//                    }
+//                    pre.next=curr;
+//                break;
+//                }
+//                curr = curr.next;
+//                count++;
+//            }
+
+        } else {
+            System.out.println("Listata e prazna");
+        }
+
+    }
+
 }
 
 public class Main {
@@ -66,5 +169,32 @@ public class Main {
         System.out.println("Listata pred da bide prevrtena: " + lista.toString());
         lista.mirror();
         System.out.println("Listata otkako e prevrtena: " + lista.toString());
+
+        //ChatGPT primer -> 1
+        SLLNode<String> pom = lista.reverseList(lista.getHead());
+        System.out.print("Listata otkako e prevrtena po vtor pat: ");
+
+        while (pom != null) {
+            if (pom.next == null) {
+                System.out.print(pom.value);
+                pom = pom.next;
+                continue;
+            }
+            System.out.print(pom.value + "->");
+            pom = pom.next;
+        }
+
+        System.out.println();
+        //ChatGPT primer -> 2
+        //Description: Reverse a singly linked list from position m to n. Do it in one-pass.
+
+        //Example:
+        //Input: 1 -> 2 -> 3 -> 4 -> 5 -> NULL, m = 2, n = 4
+        //Output: 1 -> 4 -> 3 -> 2 -> 5 -> NULL
+        int m = 2, n = 4;
+
+        lista.reverseInbetween(m, n);
+        System.out.println("Prevrtena lista od od m od n clen: " + lista.toString());
+
     }
 }
