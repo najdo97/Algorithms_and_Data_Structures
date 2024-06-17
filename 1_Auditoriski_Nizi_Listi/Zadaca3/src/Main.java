@@ -113,49 +113,26 @@ class SLL<E> {
 
     public void reverseInbetween(int m, int n) {
         if (first != null) {
-            SLLNode<String> curr = this.first;
-            SLLNode<String> pre = null;
-            SLLNode<String> start = null;
-            SLLNode<String> after = null;
 
-            for (int i = 1; i < m; i++) {
-                curr = curr.next;
+            if (m == n || first == null) {
+                System.out.println("Listata e prazna ili m i n se isti");
+                return;
+            } else {
+
+                SLLNode<String> previous = null;
+                SLLNode<String> current = first;
+                SLLNode<String> next = null;
+
+                SLLNode<String> before = null;
+
+                for (int i = 1; i < m - 1; i++) {
+
+                }
+
+
             }
-            pre = curr;
-            after = curr.next;
-
-            for (int i = 0; i < n - m; i++) {
-                start
-
-            }
-
-//            while (curr != null) {
-//
-//                if (count + 1 == m) {
-//                    pre = curr;
-//                }
-//                if (count == m) {
-//                    while (count <= n) {
-//                        next = curr.next;
-//                        curr.next = prev;
-//                        prev = curr;
-//                        curr = next;
-//
-//                        count++;
-//                    }
-//                    pre.next=curr;
-//                break;
-//                }
-//                curr = curr.next;
-//                count++;
-//            }
-
-        } else {
-            System.out.println("Listata e prazna");
         }
-
     }
-
 }
 
 public class Main {
@@ -170,7 +147,7 @@ public class Main {
         lista.mirror();
         System.out.println("Listata otkako e prevrtena: " + lista.toString());
 
-        //ChatGPT primer -> 1
+        //todo - ChatGPT primer -> 1
         SLLNode<String> pom = lista.reverseList(lista.getHead());
         System.out.print("Listata otkako e prevrtena po vtor pat: ");
 
@@ -185,7 +162,7 @@ public class Main {
         }
 
         System.out.println();
-        //ChatGPT primer -> 2
+        //todo - ChatGPT primer -> 2
         //Description: Reverse a singly linked list from position m to n. Do it in one-pass.
 
         //Example:
