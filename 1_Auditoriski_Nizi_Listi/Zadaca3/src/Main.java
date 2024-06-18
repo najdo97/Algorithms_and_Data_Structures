@@ -119,6 +119,10 @@ class SLL<E> {
                 return;
             } else {
 
+                if (m == 1) {
+                    SLLNode<String> dummy = new SLLNode<>("", first);
+                    first = dummy;
+                }
                 SLLNode<String> previous = null;
                 SLLNode<String> current = first;
                 SLLNode<String> next = null;
@@ -126,9 +130,24 @@ class SLL<E> {
                 SLLNode<String> before = null;
 
                 for (int i = 1; i < m - 1; i++) {
+                    current = current.next;
+                }
+                before = current;       //ako m==1, before ke pokazuva kon dummy jazolot, ako m>1  before ke pokazuva tocno pred pocetok na prevrtuvanjeto. OVOJ JAZOL E NAJBITEN
+
+                current = current.next; //ako m==1, ke si otide na prviot jazol, od toj od koj shto treba da pocneme da prevrtuvame
+
+                for (int i = 0; i < n - m + 1; i++) {   //uslovot moze da bide ----> i < n-m+1 <---- ILI -----> i <= n-m <-----  PRIMER: m=2 ; n=7 => 7-2 =5 ; 5 PATI TREBA DA SVRTI CIKLUSOT !
+
+                    next = current.next;     //zacuvuvanje pointerot shto pokazuva kon sledniot jazol
+                    current.next = previous; // raskinuvanje na starata vrska i prenasocuvanje kon drugiot jazol, vo slucajov prethodnikot.
+
+                    previous = current;     // pomestuvanje napred
+                    current = next;         // pomestvuanje napred
+
 
                 }
-
+                before.next.next = current;
+                before.next = previous;
 
             }
         }
@@ -147,28 +166,33 @@ public class Main {
         lista.mirror();
         System.out.println("Listata otkako e prevrtena: " + lista.toString());
 
-        //todo - ChatGPT primer -> 1
-        SLLNode<String> pom = lista.reverseList(lista.getHead());
-        System.out.print("Listata otkako e prevrtena po vtor pat: ");
+//        //todo - ChatGPT primer -> 1
+//        SLLNode<String> pom = lista.reverseList(lista.getHead());
+//        System.out.print("Listata otkako e prevrtena po vtor pat: ");
+//
+//        while (pom != null) {
+//            if (pom.next == null) {
+//                System.out.print(pom.value);
+//                pom = pom.next;
+//                continue;
+//            }
+//            System.out.print(pom.value + "->");
+//            pom = pom.next;
+//        }
+//
+//        System.out.println();
+//        System.out.println("Proveerka " + lista.toString());
 
-        while (pom != null) {
-            if (pom.next == null) {
-                System.out.print(pom.value);
-                pom = pom.next;
-                continue;
-            }
-            System.out.print(pom.value + "->");
-            pom = pom.next;
-        }
-
-        System.out.println();
         //todo - ChatGPT primer -> 2
         //Description: Reverse a singly linked list from position m to n. Do it in one-pass.
 
         //Example:
         //Input: 1 -> 2 -> 3 -> 4 -> 5 -> NULL, m = 2, n = 4
         //Output: 1 -> 4 -> 3 -> 2 -> 5 -> NULL
-        int m = 2, n = 4;
+        int m = 2, n = 5;
+
+        lista.mirror();
+        System.out.println("Vratena vo originalna forma: " + lista.toString());
 
         lista.reverseInbetween(m, n);
         System.out.println("Prevrtena lista od od m od n clen: " + lista.toString());
