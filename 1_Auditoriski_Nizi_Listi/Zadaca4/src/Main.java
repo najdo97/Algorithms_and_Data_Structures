@@ -60,28 +60,41 @@ class SLL<E> {
 }
 
 class JoinSortedLists<E extends Comparable<E>> {
-    public void join(SLL<E> lista1, SLL<E> lista2) {
+    public SLL<E> join(SLL<E> lista1, SLL<E> lista2) {
 
         SLLNode<E> prva = lista1.getHead();
         SLLNode<E> vtora = lista2.getHead();
-        SLLNode<E> rezultat = null;
+        SLL<E> rezultat = new SLL<E>();
 
 
-        while (prva != null || vtora != null) {
+        while (prva != null && vtora != null) {
 
             if (prva.value.compareTo(vtora.value) < 0) {
-                rezultat = vtora;
+                rezultat.insertLast(prva.value);
 
-                rezultat = rezultat.next;
-                vtora=vtora.next;
+                prva = prva.next;
             } else {
-                rezultat = prva;
+                rezultat.insertLast(vtora.value);
 
-                rezultat = rezultat.next;
-                prva=prva.next;
+                vtora = vtora.next;
             }
-
         }
+
+        if (prva != null) {
+            while (prva != null) {
+                rezultat.insertLast(prva.value);
+
+                prva = prva.next;
+            }
+        } else if (vtora != null) {
+            while (vtora != null) {
+                rezultat.insertLast(vtora.value);
+
+                vtora = vtora.next;
+            }
+        }
+
+        return rezultat;
     }
 }
 
@@ -102,5 +115,24 @@ public class Main {
 
         System.out.println("Lista 1: " + lista1.toString());
         System.out.println("Lista 2: " + lista2.toString());
+
+        SLL<Integer> lista3=new SLL<Integer>();
+
+        lista3.insertLast(5);
+        lista3.insertLast(6);
+        lista3.insertLast(8);
+
+        SLL<Integer> lista4=new SLL<Integer>();
+
+        lista4.insertLast(2);
+        lista4.insertLast(7);
+        lista4.insertLast(11);
+
+        System.out.println(lista3.toString());
+        System.out.println(lista4.toString());
+
+        JoinSortedLists<Integer>nova=new JoinSortedLists<>();
+        System.out.println(nova.join(lista3,lista4));
+
     }
 }
