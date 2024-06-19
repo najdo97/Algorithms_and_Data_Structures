@@ -63,9 +63,9 @@ class DLL<E> {
         while (tmp != null) {
 
             if (tmp.next != null) {
-                lista += tmp.value + "->";
+                lista += tmp.value + "(" + tmp.brPovtoruvanja + ")" + "->";
             } else {
-                lista += tmp.value;
+                lista += tmp.value + "(" + tmp.brPovtoruvanja + ")";
             }
             tmp = tmp.next;
         }
@@ -123,6 +123,8 @@ class DLL<E> {
             tmp = tmp.next;
         }
     }
+
+
 //    boolean isDuplicate(DLL<E> nova, E value) {
 //
 //        DLLNode<E> tmp = nova.getHead();
