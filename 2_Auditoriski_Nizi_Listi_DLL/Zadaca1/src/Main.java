@@ -7,54 +7,150 @@
 
 
 class DLLNode<E> {
-    protected E value;
-    protected int br_povtoruvanja;
 
-    protected DLLNode<E> next;
     protected DLLNode<E> previous;
+    protected E value;
+    protected int brPovtoruvanja;
+    protected DLLNode<E> next;
 
-    public DLLNode() {
-
-        this.value = null;
-        this.next = null;
-        this.previous = null;
-        br_povtoruvanja = 0;
-    }
-
-    public DLLNode(E value, DLLNode<E> next, DLLNode<E> previous) {
+    DLLNode(E value, DLLNode<E> previous, DLLNode<E> next) {
 
         this.value = value;
-        this.next = next;
         this.previous = previous;
-        //this.br_povtoruvanja++;
+        this.next = next;
+        brPovtoruvanja = 0;
     }
+
 }
 
 class DLL<E> {
+
     protected DLLNode<E> head;
     protected DLLNode<E> tail;
 
-    public DLL() {
-        head = new DLLNode<>();
-        tail = new DLLNode<>();
+    DLL() {
+        this.head = null;
+        this.tail = null;
     }
 
-    public void insertLast(E value) {
+    void insertFirst(E value) {
+        DLLNode<E> insert = new DLLNode<E>(value, null, head);
         if (head == null) {
+            tail = insert;
+        } else {
+            head.previous = insert;
+        }
+        head = insert;              //we must use head = insert ------->  'head = head.previous' is WRONG - head will always stay null !
+    }
+
+    void insertLast(E value) {
+
+        if (head == null) {
+            insertFirst(value);
+        } else {
             DLLNode<E> insert = new DLLNode<E>(value, tail, null);
-
-            head=insert;
-
-            tail.previous = head;
-            tail.next=null;
-        }else{
-
-            tail.next=new DLLNode<>(value,null,tail);
-
+            tail.next = insert;
+            tail = insert;
         }
 
     }
 
+    @Override
+    public String toString() {
+        String lista = "";
+
+        DLLNode<E> tmp = head;
+        while (tmp != null) {
+
+            if (tmp.next != null) {
+                lista += tmp.value + "->";
+            } else {
+                lista += tmp.value;
+            }
+            tmp = tmp.next;
+        }
+        return lista;
+    }
+
+    DLLNode<E> getHead() {
+        return this.head;
+    }
+
+    void deleteHead() {
+
+        head.next.previous = null;
+        head = head.next;
+    }
+
+    void deleteTail() {
+
+        tail.previous.next = null;
+        tail = tail.previous;
+    }
+
+    void deleteNode(DLLNode<E> node) {
+
+        if (node == head) {
+            deleteHead();
+            return;
+        }
+        if (node == tail) {
+            deleteTail();
+            return;
+        }
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+
+    }
+
+    void deleteAllDuplicates(DLLNode<E> node) {
+        DLLNode<E> tmp = node.next;
+        while (tmp != null) {
+
+            if (tmp.value.equals(node.value)) {
+                deleteNode(tmp);
+                node.brPovtoruvanja++;
+            }
+
+            tmp = tmp.next;
+        }
+    }
+
+    void izvadiDupliIPrebroj() {
+        DLLNode<E> tmp = this.head;
+        while (tmp != null) {
+            deleteAllDuplicates(tmp);
+            tmp = tmp.next;
+        }
+    }
+//    boolean isDuplicate(DLL<E> nova, E value) {
+//
+//        DLLNode<E> tmp = nova.getHead();
+//        while (tmp != null) {
+//
+//            if (tmp.value == value) {
+//                return true;
+//            }
+//            tmp = tmp.next;
+//        }
+//
+//        return false;
+//    }
+//
+//    void izvadiDupliIPrebroj() {
+//        DLLNode<E> tmp = this.head;
+//        DLL<E> nova = new DLL<E>();
+//        while (tmp != null) {
+//
+//            if (!isDuplicate(nova, tmp.value)) {
+//                nova.insertLast(tmp.value);
+//            }
+//            tmp = tmp.next;
+//        }
+//
+//        this.head = nova.head;
+//        this.tail = nova.tail;
+//    }
 }
 
 public class Main {
