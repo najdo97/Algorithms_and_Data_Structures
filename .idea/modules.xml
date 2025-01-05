@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/1_Kolokvium/1_Kolokvium.iml" filepath="$PROJECT_DIR$/1_Kolokvium/1_Kolokvium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Algorithms_and_Data_Structures.iml" filepath="$PROJECT_DIR$/.idea/Algorithms_and_Data_Structures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2_Auditoriski_Nizi_Listi_DLL/Zadaca1/Zadaca1.iml" filepath="$PROJECT_DIR$/2_Auditoriski_Nizi_Listi_DLL/Zadaca1/Zadaca1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca1/Zadaca11.iml" filepath="$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca1/Zadaca11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca2/Zadaca2.iml" filepath="$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca2/Zadaca2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2_Auditoriski_Nizi_Listi_DLL/Zadaca2/Zadaca21.iml" filepath="$PROJECT_DIR$/2_Auditoriski_Nizi_Listi_DLL/Zadaca2/Zadaca21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca3/Zadaca3.iml" filepath="$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca3/Zadaca3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca4/Zadaca4.iml" filepath="$PROJECT_DIR$/1_Auditoriski_Nizi_Listi/Zadaca4/Zadaca4.iml" />
+    </modules>
+  </component>
+</project>
