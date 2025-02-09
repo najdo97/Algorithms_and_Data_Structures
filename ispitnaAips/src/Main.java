@@ -123,11 +123,11 @@ public class Main {
         LinkedStack<String> stack = new LinkedStack<>();
         boolean answer = true;
 
-aaaaaaa        while (sc.hasNextLine()) {
+        while (sc.hasNextLine()) {
 
             String input = sc.nextLine().trim();
 
-            if(input.isBlank()){        //todo - ako e prazna linijata, kraj na ciklusot
+            if (input.isBlank()) {        //todo - ako e prazna linijata, kraj na ciklusot
                 break;
             }
 
@@ -137,9 +137,9 @@ aaaaaaa        while (sc.hasNextLine()) {
 
                     if (
                             input.equals("\\end{subsection}") ||
-                            input.equals("\\end{subsubsection}") ||
-                            input.equals("\\end{text}") ||
-                            !input.startsWith("\\")
+                                    input.equals("\\end{subsubsection}") ||
+                                    input.equals("\\end{text}") ||
+                                    !input.startsWith("\\")
                     ) {
                         answer = false;
                         break;
@@ -148,10 +148,10 @@ aaaaaaa        while (sc.hasNextLine()) {
 
                     if (
                             input.equals("\\begin{section}") ||
-                            input.equals("\\end{section}") ||
-                            input.equals("\\end{subsubsection}") ||
-                            input.equals("\\end{text}") ||
-                            !input.startsWith("\\")
+                                    input.equals("\\end{section}") ||
+                                    input.equals("\\end{subsubsection}") ||
+                                    input.equals("\\end{text}") ||
+                                    !input.startsWith("\\")
                     ) {
                         answer = false;
                         break;
@@ -160,11 +160,11 @@ aaaaaaa        while (sc.hasNextLine()) {
                 } else if (stack.peek().equals("\\begin{subsubsection}")) {
                     if (
                             input.equals("\\begin{section}") ||
-                            input.equals("\\end{section}") ||
-                            input.equals("\\begin{subsection}") ||
-                            input.equals("\\end{subsection}") ||
-                            input.equals("\\end{text}") ||
-                            !input.startsWith("\\")
+                                    input.equals("\\end{section}") ||
+                                    input.equals("\\begin{subsection}") ||
+                                    input.equals("\\end{subsection}") ||
+                                    input.equals("\\end{text}") ||
+                                    !input.startsWith("\\")
                     ) {
                         answer = false;
                         break;
@@ -174,11 +174,11 @@ aaaaaaa        while (sc.hasNextLine()) {
                 } else if (stack.peek().equals("\\begin{text}")) {
                     if (
                             input.equals("\\begin{section}") ||
-                            input.equals("\\end{section}") ||
-                            input.equals("\\begin{subsection}") ||
-                            input.equals("\\end{subsection}") ||
-                            input.equals("\\begin{subsubsection}") ||
-                            input.equals("\\end{subsubsection}")
+                                    input.equals("\\end{section}") ||
+                                    input.equals("\\begin{subsection}") ||
+                                    input.equals("\\end{subsection}") ||
+                                    input.equals("\\begin{subsubsection}") ||
+                                    input.equals("\\end{subsubsection}")
                     ) {
                         answer = false;
                         break;
