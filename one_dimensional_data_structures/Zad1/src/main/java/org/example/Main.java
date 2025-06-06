@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Scanner;
 import java.util.NoSuchElementException;
 
@@ -105,13 +106,38 @@ class LinkedStack<E> implements Stack<E> {
 public class Main {
     public static void main(String[] args) {
 
+        LinkedStack<String> stack = new LinkedStack<>();
         Scanner in = new Scanner(System.in);
 
-        while (!in.next().equals("x")) {
+        while (in.hasNextLine()) {
+            String input = in.nextLine();
+            if (input.equals("x")) {
+                break;
+            }
+            if (stack.isEmpty() && input.startsWith("end")) {
+                System.out.println("Invalid");
+                return;
+            }
 
+            if (!stack.isEmpty() && input.startsWith("end")) {
+                String pom1 = stack.peek();
+                String pom2 = input.substring(3);
 
+                if (!pom1.equals(pom2)) {
+                    System.out.println("Invalid");
+                    return;
+                } else {
+                    stack.pop();
+                    continue;
+                }
+            }
+
+            stack.push(input);
         }
-
-
+        if (stack.isEmpty()) {
+            System.out.println("Valid");
+        } else {
+            System.out.println("Invalid");
+        }
     }
 }

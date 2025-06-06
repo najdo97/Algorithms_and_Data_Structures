@@ -102,16 +102,6 @@ class LinkedStack<E> implements Stack<E> {
 }
 
 
-//  \begin{section}
-//    \begin{subsection}
-//        \begin{subsubsection}
-//            \begin{text}
-//             \end{text}
-//        \end{subsubsection}
-//    \end{subsection}
-//\end{section}
-
-
 public class Main {
     public static void main(String[] args) {
 
@@ -219,6 +209,16 @@ public class Main {
         System.out.println(answer);
     }
 }
+
+//  \begin{section}
+//    \begin{subsection}
+//        \begin{subsubsection}
+//            \begin{text}
+//             \end{text}
+//        \end{subsubsection}
+//    \end{subsection}
+//\end{section}
+//--------------------------------------------------------------------------------------------------------------------
 
 
 //5
